@@ -11,11 +11,14 @@ const App = () => {
           <Link to="/"><h2 className="text-white text 2xl font-bold">React CRUD</h2></Link>
         </div>
       </nav>
-      <Routes>
-        <Route index element={<HomePage />}></Route>
-        <Route path="/create" element={<CreatePage />}></Route>
-        <Route path="/edit" element={<EditPage />}></Route>
-      </Routes>
+      <div className="container mx-auto p-2">
+        <Routes>
+          <Route index element={<HomePage />}></Route>
+          <Route path="/create" element={<CreatePage />}></Route>
+          <Route path="/edit" element={<EditPage />}></Route>
+        </Routes>
+      </div>
+     
     </div>
   );
 };
