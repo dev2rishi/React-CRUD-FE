@@ -11,6 +11,7 @@ const App = () => {
           <Link to="/"><h2 className="text-white text 2xl font-bold">React CRUD</h2></Link>
         </div>
       </nav>
+      <section>
       <div className="container mx-auto p-2">
         <Routes>
           <Route index element={<HomePage />}></Route>
@@ -18,7 +19,10 @@ const App = () => {
           <Route path="/edit" element={<EditPage />}></Route>
         </Routes>
       </div>
-     
+      </section>
+     {/* <footer className="bg-orange-400">
+      <div className="container text-center mx-auto">Created by Rishabh Singh @2024</div>
+     </footer> */}
     </div>
   );
 };
