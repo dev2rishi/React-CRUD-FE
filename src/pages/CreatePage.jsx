@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+const API_URL = "http://localhost:3000/api";
 
 const CreatePage = () => {
 
@@ -13,6 +13,8 @@ const CreatePage = () => {
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
 
+
+
     const saveProduct = async(e) => {
         e.preventDefault();
         if(!name || !quantity || !price || !image) {
@@ -22,7 +24,7 @@ const CreatePage = () => {
 
        try {
          setIsLoading(true)
-          const response = await axios.post("http://localhost:3000/api/products", {
+          const response = await axios.post(`${API_URL}/products`, {
             name: name,
             quantity: quantity,
             price: price,
