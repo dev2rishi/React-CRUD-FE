@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 
 const CreatePage = () => {
@@ -15,7 +16,7 @@ const CreatePage = () => {
     const saveProduct = async(e) => {
         e.preventDefault();
         if(!name || !quantity || !price || !image) {
-            alert('Please fill out all the fields')
+            toast.warning('Please fill out all the fields')
             return;
         }
 
@@ -28,10 +29,11 @@ const CreatePage = () => {
             image: image
         });
             console.log(response.data)
-            alert(`Save ${response.data.name} Successfully`)
+            toast.success(`Save ${response.data.name} Successfully`)
             setIsLoading(false)
             navigate('/')
        } catch (error) {
+            toast.error(error.message)
             console.log(error)
             setIsLoading(false)
        }

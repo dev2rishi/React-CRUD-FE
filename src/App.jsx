@@ -1,4 +1,6 @@
 import { Routes, Route, Link } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import HomePage from "./pages/HomePage";
 import CreatePage from "./pages/CreatePage";
 import EditPage from "./pages/EditPage";
@@ -19,6 +21,7 @@ const App = () => {
           <Route path="/edit" element={<EditPage />}></Route>
         </Routes>
       </div>
+      <ToastContainer />
       </section>
      {/* <footer className="bg-orange-400">
       <div className="container text-center mx-auto">Created by Rishabh Singh @2024</div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
 import Product from "../components/Product";
 const API_URL = "http://localhost:3000/api";
@@ -16,6 +17,7 @@ const HomePage = () => {
         setProducts(response.data);
         setIsLoading(false);
     } catch (error) {
+       toast.error(error.message)
        console.log(error);
     }
   };
