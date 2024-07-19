@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Product from "../components/Product";
-const API_URL = "http://localhost:3000/api";
+import { API_URL } from "../App";
 
 const HomePage = () => {
   const [product, setProducts] = useState([]);
@@ -41,7 +41,7 @@ const HomePage = () => {
               <>
                 {product.map((item, index) => {
                  return (
-                    <Product item={item} key={index} />
+                    <Product key={index} item={item} getProducts={getProducts} />
                  )
                 })}
               </>

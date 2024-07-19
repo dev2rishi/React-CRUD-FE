@@ -1,7 +1,33 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import { API_URL } from "../App";
 
-const Product = ({ item }) => {
+const Product = ({ item, getProducts }) => {
+
+  const deleteProduct = async(id) => {
+    const result = await Swal.fire({
+      title: 'Do you really want to delete this product?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete!",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    })
+    if(result.isConfirmed) {
+      try {
+        await axios.delete(`${API_URL}/products/${id}`);
+        toast.success('Delete a product successfully');
+        getProducts();
+        
+      } catch (error) {
+        toast.error(error.message);
+      }
+    }
+  }
+
   return (
     <div className="bg-white rounded shadow-lg overflow-hidden">
       <img src={item.image} className="w-full h-28 object-cover" />
@@ -15,10 +41,10 @@ const Product = ({ item }) => {
             <h2>Edit</h2>
           </Link>
           
-          <Link to="/"
+          <button onClick={() => deleteProduct(item._id)}
             className="inline-block w-full text-center shadow-md text-sm bg-red-700 text-white rounded-sm px-4 py-1 font-bold hover:bg-red-600 hover:cursor-pointer ">
             <h2>Delete</h2>
-          </Link>
+          </button>
         </div>
       </div>
     </div>

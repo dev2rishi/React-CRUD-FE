@@ -5,6 +5,9 @@ import HomePage from "./pages/HomePage";
 import CreatePage from "./pages/CreatePage";
 import EditPage from "./pages/EditPage";
 
+export const API_URL = import.meta.env.VITE_BACKEND_URL;
+
+
 const App = () => {
   return (
     <div>

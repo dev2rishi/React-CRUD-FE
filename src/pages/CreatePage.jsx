@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-const API_URL = "http://localhost:3000/api";
+import { API_URL } from "../App";
 
 const CreatePage = () => {
 
