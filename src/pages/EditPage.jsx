@@ -42,9 +42,15 @@ const EditPage = () => {
         e.preventDefault()
         setIsLoading(true)
         try {
-            await axios.put(`${API_URL}/products/${id}`, product)
-            toast.success('Update a product successfully')
-            navigate('/')
+            if(!product.name || !product.quantity || !product.price || !product.image) {
+                toast.warn('All fields are required and cannot be empty!')
+                setIsLoading(false)
+                return;
+            } else {
+                await axios.put(`${API_URL}/products/${id}`, product)
+                toast.success('Update a product successfully')
+                navigate('/')
+            }
         } catch (error) {
             setIsLoading(false)
             toast.error(error.message)
